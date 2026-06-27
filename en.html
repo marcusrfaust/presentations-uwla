@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oil Prices Post-War — Hermeneutic Analysis</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a1a;
+    color: #e0e0e0;
+    overflow-x: hidden;
+  }
+
+  .slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(63, 43, 160, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(225, 24, 106, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .slide-number {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.2);
+    font-weight: 300;
+    letter-spacing: 2px;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tag {
+    display: inline-block;
+    background: rgba(225, 24, 106, 0.2);
+    border: 1px solid rgba(225, 24, 106, 0.3);
+    color: #E1186A;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  h1 .highlight {
+    background: linear-gradient(135deg, #E1186A, #FF6B9D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 30px;
+    line-height: 1.2;
+  }
+
+  h2 .accent {
+    color: #E1186A;
+  }
+
+  h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 15px;
+    margin-top: 25px;
+  }
+
+  h3:first-of-type { margin-top: 0; }
+
+  .subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 16px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+  }
+
+  .card:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(225, 24, 106, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .card h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.3);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 0;
+  }
+
+  .card .emoji-badge {
+    display: inline-block;
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th {
+    background: rgba(225, 24, 106, 0.15);
+    color: #fff;
+    font-weight: 600;
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 2px solid rgba(225, 24, 106, 0.2);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.7);
+    vertical-align: top;
+  }
+
+  tr:hover td {
+    background: rgba(255,255,255,0.03);
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(63, 43, 160, 0.3);
+    color: #b8a9ff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .quote {
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid #E1186A;
+    padding: 20px 25px;
+    border-radius: 0 12px 12px 0;
+    margin: 20px 0;
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .quote cite {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 30px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 20px 30px;
+    text-align: center;
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .stat .number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #E1186A, #FF6B9D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat .desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .conclusion-box {
+    background: linear-gradient(135deg, rgba(63,43,160,0.2), rgba(225,24,106,0.1));
+    border: 1px solid rgba(225,24,106,0.2);
+    border-radius: 16px;
+    padding: 30px;
+    margin-top: 20px;
+  }
+
+  .conclusion-box p {
+    color: rgba(255,255,255,0.8);
+    font-size: 15px;
+  }
+
+  .nav-controls {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 100;
+  }
+
+  .nav-controls button {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .nav-controls button:hover {
+    background: rgba(225, 24, 106, 0.3);
+    border-color: #E1186A;
+  }
+
+  .nav-controls .counter {
+    display: flex;
+    align-items: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+    padding: 0 10px;
+  }
+
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3F2BA0, #E1186A);
+    z-index: 1000;
+    transition: width 0.4s ease;
+  }
+
+  .slide-cover h1 { font-size: 58px; }
+  .slide-cover .meta { margin-top: 50px; }
+  .slide-cover .meta p { font-size: 14px; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .blob-1 {
+    width: 400px; height: 400px;
+    background: #3F2BA0;
+    top: -100px; right: -100px;
+  }
+
+  .blob-2 {
+    width: 300px; height: 300px;
+    background: #E1186A;
+    bottom: -80px; left: -80px;
+  }
+
+  .blob-3 {
+    width: 250px; height: 250px;
+    background: #1A2A6C;
+    top: 40%; right: 10%;
+  }
+
+  @media (max-width: 768px) {
+    .slide { padding: 40px 24px; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 24px; }
+    .grid-2, .grid-4 { grid-template-columns: 1fr; }
+    .stat-row { flex-direction: column; }
+    .slide-cover h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- SLIDE 1: COVER -->
+<section class="slide slide-cover" data-slide="1">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="container">
+    <span class="tag">Hermeneutic Analysis</span>
+    <h1>Oil Prices in the <span class="highlight">Post-War Era</span></h1>
+    <p class="subtitle">How different news sources covered the return of oil prices to pre-war levels after the closure of the Strait of Hormuz — a critical analysis of editorial bias</p>
+    <div class="meta">
+      <p>Marcus Rodrigues Faust</p>
+      <p>UWLA — Ethics and Critical Thinking</p>
+      <p>June 2026</p>
+    </div>
+  </div>
+  <div class="slide-number">01 / 12</div>
+</section>
+
+<!-- SLIDE 2: METHODOLOGY -->
+<section class="slide" data-slide="2">
+  <div class="container">
+    <span class="tag">Methodology</span>
+    <h2>The <span class="accent">Hermeneutic Circle</span></h2>
+    <p class="subtitle" style="margin-bottom:10px;">Theoretical Framework: Critical Hermeneutics (Gadamer — Ricoeur)</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="emoji-badge">📖</div>
+        <h4>The Fact as Text</h4>
+        <p>The isolated "objective fact" — Brent crude oil falling to the $72-73 range — functions as the <em>text</em> to be interpreted.</p>
+      </div>
+      <div class="card">
+        <div class="emoji-badge">🎭</div>
+        <h4>The Outlet as Interpreter</h4>
+        <p>Each media outlet projects its own "horizon of expectations" (<em>Erwartungshorizont</em>) onto the fact.</p>
+      </div>
+      <div class="card">
+        <div class="emoji-badge">🎯</div>
+        <h4>Drivers of Discourse</h4>
+        <p>Economic, geopolitical, and class interests shape the narrative — consciously or unconsciously.</p>
+      </div>
+      <div class="card">
+        <div class="emoji-badge">🔍</div>
+        <h4>Goal of Analysis</h4>
+        <p>Not to pick the "correct" article, but to map the complete informational ecosystem and its power vectors.</p>
+      </div>
+    </div>
+
+    <div class="quote">
+      "Corporate and state media do not merely report the price of oil — they construct the political and economic meaning of that price to legitimize specific agendas."
+    </div>
+  </div>
+  <div class="slide-number">02 / 12</div>
+</section>
+
+<!-- SLIDE 3: WHY COMPARE -->
+<section class="slide" data-slide="3">
+  <div class="container">
+    <span class="tag">Rationale</span>
+    <h2>Why Compare <span class="accent">Multiple Sources</span>?</h2>
+
+    <div class="grid-2" style="margin-top:30px;">
+      <div>
+        <h3>The Problem</h3>
+        <p>The same news event can be told in radically different ways depending on editorial orientation, geopolitical interests, target audience, and political timing.</p>
+        <p>The factual truth is singular. The <strong>narrative</strong>, however, is shaped by structural conditions that often operate below the reader's conscious awareness.</p>
+      </div>
+      <div>
+        <h3>The Hermeneutic Solution</h3>
+        <p>Communicational ethics requires the researcher to cross-reference narratives in order to decode the power vectors hidden beneath the apparent neutrality of numbers.</p>
+        <p>Systematic comparison between sources reveals:</p>
+        <p style="margin-bottom:6px;">→ What each source <strong>highlights</strong></p>
+        <p style="margin-bottom:6px;">→ What each source <strong>omits</strong></p>
+        <p style="margin-bottom:6px;">→ Which <strong>interest</strong> each legitimizes</p>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="number">4</div>
+        <div class="desc">Sources Analyzed</div>
+      </div>
+      <div class="stat">
+        <div class="number">3</div>
+        <div class="desc">Continents of Origin</div>
+      </div>
+      <div class="stat">
+        <div class="number">1</div>
+        <div class="desc">Objective Fact</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">03 / 12</div>
+</section>
+
+<!-- SLIDE 4: THE FACT -->
+<section class="slide" data-slide="4">
+  <div class="container">
+    <span class="tag">Context</span>
+    <h2>The <span class="accent">Objective Fact</span></h2>
+    <p class="subtitle">Oil prices return to pre-war levels after the US-Iran MOU</p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="number">72.48</div>
+        <div class="desc">Brent (US$) — pre-war</div>
+      </div>
+      <div class="stat">
+        <div class="number">&lt;70</div>
+        <div class="desc">WTI (US$) — post-deal</div>
+      </div>
+      <div class="stat">
+        <div class="number">60</div>
+        <div class="desc">Days for nuclear talks</div>
+      </div>
+      <div class="stat">
+        <div class="number">284</div>
+        <div class="desc">Vessels since MOU</div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:10px;">
+      <div class="card">
+        <h4>Timeline</h4>
+        <p><strong>Feb 28, 2026:</strong> US and Israel launch strikes on Iran</p>
+        <p><strong>Feb-Jun 2026:</strong> Iran closes the Strait of Hormuz; prices spike</p>
+        <p><strong>Jun 17, 2026:</strong> US-Iran MOU signed</p>
+        <p><strong>Jun 2026:</strong> Partial traffic resumes; prices retreat</p>
+      </div>
+      <div class="card">
+        <h4>The Strait of Hormuz</h4>
+        <p>World's most critical energy chokepoint. In 2025, an average of 13 million barrels per day crossed the strait. By June 2026, traffic recovered to 4.9 million barrels per day — still well below the historical average.</p>
+        <p>Iran plans to charge "maritime service fees" from vessels crossing the strait.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">04 / 12</div>
+</section>
+
+<!-- SLIDE 5: COMPARATIVE TABLE -->
+<section class="slide" data-slide="5">
+  <div class="container">
+    <span class="tag">Comparison</span>
+    <h2>Comparative <span class="accent">Matrix</span></h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Outlet</th>
+            <th>Epistemological Lens</th>
+            <th>Central Element</th>
+            <th>Structural Omission</th>
+            <th>Ethical Dimension</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>WSJ</strong></td>
+            <td>Technocratic / Financial</td>
+            <td>Futures charts, SPR inventories, mathematical risk models</td>
+            <td>Human cost of conflict, local sovereign tensions</td>
+            <td>Liquidity and free market efficiency as supreme values</td>
+          </tr>
+          <tr>
+            <td><strong>Al Jazeera</strong></td>
+            <td>Geopolitical / Statist</td>
+            <td>Military control lines, strait jurisdictions, regional veto power</td>
+            <td>International financial mechanics, inflationary impacts</td>
+            <td>Physical sovereignty precedes market laws</td>
+          </tr>
+          <tr>
+            <td><strong>BBC</strong></td>
+            <td>Social / Competition</td>
+            <td>Consumer pocketbook, antitrust investigations, pass-through asymmetry</td>
+            <td>Macroeconomic liquidity risks, bond dynamics</td>
+            <td>Corporate social responsibility toward the vulnerable</td>
+          </tr>
+          <tr>
+            <td><strong>Yahoo Finance</strong></td>
+            <td>Macroeconomic / Monetary</td>
+            <td>Interest rates, PCE indices, Central Bank decisions</td>
+            <td>Territorial sovereignty, consumer hardship</td>
+            <td>Systemic stability above short-term individual relief</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="slide-number">05 / 12</div>
+</section>
+
+<!-- SLIDE 6: WSJ -->
+<section class="slide" data-slide="6">
+  <div class="container">
+    <span class="tag">Analysis 1/4</span>
+    <h2>The Wall Street <span class="accent">Journal</span></h2>
+    <p class="subtitle">"Oil Retreats to Prewar Levels as Gulf Flows Through Hormuz Pick Up"</p>
+
+    <div class="grid-2">
+      <div>
+        <div class="card">
+          <h4>About the Source</h4>
+          <p>America's premier financial newspaper. Ownership: News Corp (Rupert Murdoch). Audience: investors, executives, financial markets. Editorial line: economic liberalism, free markets.</p>
+        </div>
+        <div class="card" style="margin-top:16px;">
+          <h4>Hermeneutic Analysis</h4>
+          <p><strong>Who speaks:</strong> The institutional financial market (Goldman Sachs, Kpler, HSBC).</p>
+          <p><strong>Interest:</strong> Legitimize deregulation and trust in market self-correction mechanisms.</p>
+          <p><strong>Emphasis:</strong> Supply surplus anticipation, flow metrics, deconstruction of the security premium.</p>
+          <p><strong>Omission:</strong> Human cost of conflict, local sovereign tensions, impact on ordinary consumers.</p>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h4>Central Message</h4>
+          <p>The global financial market is a self-regulating, hyper-efficient system that mathematically prices the future, dissolving geopolitical risk premiums as soon as physical barriers begin to be dismantled.</p>
+        </div>
+        <div class="quote" style="margin-top:16px;">
+          "The market challenges the assumption that long-term prices must embed a fixed security premium against wars, given the speed of adaptation in the oil and gas sector."
+          <cite>— The Wall Street Journal</cite>
+        </div>
+        <div class="card" style="margin-top:16px;background:rgba(225,24,106,0.06);border-color:rgba(225,24,106,0.15);">
+          <h4>🎯 Ethical Dimension</h4>
+          <p>The supreme value is liquidity and free market efficiency. Geopolitical conflicts are merely temporary noise in the supply-demand curve. The rational investor should focus on flow infrastructure.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">06 / 12</div>
+</section>
+
+<!-- SLIDE 7: AL JAZEERA -->
+<section class="slide" data-slide="7">
+  <div class="container">
+    <span class="tag">Analysis 2/4</span>
+    <h2><span class="accent">Al Jazeera</span></h2>
+    <p class="subtitle">"Oil Prices Back to Pre-War Levels on Rising Middle East Supply"</p>
+
+    <div class="grid-2">
+      <div>
+        <div class="card">
+          <h4>About the Source</h4>
+          <p>The Arab world's leading news network. Headquarters: Qatar. Audience: Middle East, North Africa, and global audience. Editorial line: Global South perspective, emphasis on sovereignty and self-determination.</p>
+        </div>
+        <div class="card" style="margin-top:16px;">
+          <h4>Hermeneutic Analysis</h4>
+          <p><strong>Who speaks:</strong> The perspective of Gulf states and Iran.</p>
+          <p><strong>Interest:</strong> Assert territorial sovereignty over energy resources.</p>
+          <p><strong>Emphasis:</strong> Strait jurisdiction dispute, IRGC role, fragility of the 60-day deal.</p>
+          <p><strong>Omission:</strong> International financial mechanics, global inflationary impacts, Western consumer perspective.</p>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h4>Central Message</h4>
+          <p>Price stabilization is not an abstract market phenomenon but the direct result of power redistribution and the legal and military prerogatives of states that control the physical borders of energy.</p>
+        </div>
+        <div class="quote" style="margin-top:16px;">
+          "Iran's Revolutionary Guards condemned new temporary routes opened by Oman and warned vessels against unauthorized crossings: vessels not complying 'will be dealt with'."
+          <cite>— Al Jazeera</cite>
+        </div>
+        <div class="card" style="margin-top:16px;background:rgba(225,24,106,0.06);border-color:rgba(225,24,106,0.15);">
+          <h4>🎯 Ethical Dimension</h4>
+          <p>Global energy security is held hostage by territorial geopolitics. There is no "free market" without the consent of local military forces. The current price calm is a temporary, tense political arrangement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">07 / 12</div>
+</section>
+
+<!-- SLIDE 8: BBC -->
+<section class="slide" data-slide="8">
+  <div class="container">
+    <span class="tag">Analysis 3/4</span>
+    <h2><span class="accent">BBC</span></h2>
+    <p class="subtitle">"Oil Price Falls to Levels Not Seen Since Before Iran War"</p>
+
+    <div class="grid-2">
+      <div>
+        <div class="card">
+          <h4>About the Source</h4>
+          <p>UK public service broadcaster. Ownership: public (license fee). Audience: British and global general public. Editorial line: declared impartiality with social democratic tendencies.</p>
+        </div>
+        <div class="card" style="margin-top:16px;">
+          <h4>Hermeneutic Analysis</h4>
+          <p><strong>Who speaks:</strong> The perspective of the ordinary citizen and the regulator.</p>
+          <p><strong>Interest:</strong> Justify state intervention and market regulation.</p>
+          <p><strong>Emphasis:</strong> Trump-ordered "gouging" investigation, RAC consumer group denunciation, asymmetric pass-through.</p>
+          <p><strong>Omission:</strong> Macroeconomic liquidity risks, bond dynamics, financial market impacts.</p>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h4>Central Message</h4>
+          <p>There is a deep ethical disconnect between the drop in commodity prices on international markets and the pass-through of that financial relief to the ordinary consumer, revealing distortions of corporate power.</p>
+        </div>
+        <div class="quote" style="margin-top:16px;">
+          "Oil prices have come down so much and we are not seeing anything at the pump by comparison the way they should be."
+          <cite>— President Trump, as quoted by the BBC</cite>
+        </div>
+        <div class="card" style="margin-top:16px;background:rgba(225,24,106,0.06);border-color:rgba(225,24,106,0.15);">
+          <h4>🎯 Ethical Dimension</h4>
+          <p>The end of a war and the drop in macroeconomic indicators do not automatically generate social welfare. Institutional vigilance and civil pressure on energy oligopolies are necessary.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">08 / 12</div>
+</section>
+
+<!-- SLIDE 9: YAHOO FINANCE -->
+<section class="slide" data-slide="9">
+  <div class="container">
+    <span class="tag">Analysis 4/4</span>
+    <h2>Yahoo Finance / <span class="accent">Apollo</span></h2>
+    <p class="subtitle">"PCE Inflation Reached Its Highest Level in 3 Years"</p>
+
+    <div class="grid-2">
+      <div>
+        <div class="card">
+          <h4>About the Source</h4>
+          <p>Mass-market US financial portal. Ownership: Apollo Global Management (since 2024). Audience: retail and institutional investors. Editorial line: investment-oriented macroeconomic analysis.</p>
+        </div>
+        <div class="card" style="margin-top:16px;">
+          <h4>Hermeneutic Analysis</h4>
+          <p><strong>Who speaks:</strong> Asset managers and Central Banks.</p>
+          <p><strong>Interest:</strong> Justify maintaining high interest rates and tight monetary policies.</p>
+          <p><strong>Emphasis:</strong> Breakdown of oil-bond correlation, Core PCE stuck at 3.4%, unwanted economic stimulus.</p>
+          <p><strong>Omission:</strong> Territorial sovereignty, consumer hardship, immediate family relief.</p>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h4>Central Message</h4>
+          <p>The rapid drop in energy costs is a double-edged sword: it reduces headline inflation but injects liquidity into the economy, risking demand overheating and forcing Central Banks to maintain tight policies.</p>
+        </div>
+        <div class="quote" style="margin-top:16px;">
+          "Cheaper oil acts as an involuntary tax cut for businesses and consumers, stimulating travel, freight, and spending in an economy the Central Bank is trying to slow down."
+          <cite>— Torsten Sløk, Chief Economist at Apollo</cite>
+        </div>
+        <div class="card" style="margin-top:16px;background:rgba(225,24,106,0.06);border-color:rgba(225,24,106,0.15);">
+          <h4>🎯 Ethical Dimension</h4>
+          <p>Contemporary financial dynamics are hyper-complex. Simple relief in one sector generates secondary inflationary pressures in others, making economic stability management a continuously challenging task.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">09 / 12</div>
+</section>
+
+<!-- SLIDE 10: CONCLUSION -->
+<section class="slide" data-slide="10">
+  <div class="container">
+    <span class="tag">Conclusion</span>
+    <h2>What <span class="accent">Hermeneutics</span> Revealed</h2>
+
+    <p style="font-size:18px;color:rgba(255,255,255,0.8);margin-bottom:25px;">The facts are the same. The narratives, radically different.</p>
+
+    <div class="grid-4">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:8px;">📈</div>
+        <h4 style="font-size:13px;">WSJ</h4>
+        <p style="font-size:12px;">The self-regulating market priced in peace. Trust the futures.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:8px;">🌍</div>
+        <h4 style="font-size:13px;">Al Jazeera</h4>
+        <p style="font-size:12px;">Iranian sovereignty prevailed. Territorial power commands.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:8px;">⛽</div>
+        <h4 style="font-size:13px;">BBC</h4>
+        <p style="font-size:12px;">Consumers are being harmed. The state must intervene.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:8px;">🏦</div>
+        <h4 style="font-size:13px;">Yahoo Finance</h4>
+        <p style="font-size:12px;">Cheap oil overheats the economy. Rates must stay high.</p>
+      </div>
+    </div>
+
+    <div class="conclusion-box" style="margin-top:30px;">
+      <p><strong>Final conclusion:</strong> Corporate and state media do not merely <em>report</em> the price of oil — they <strong>construct the political and economic meaning of that price</strong> to legitimize specific agendas: market deregulation (WSJ), regional deterrence power (Al Jazeera), state regulatory intervention (BBC), or monetary tightening by central authorities (Yahoo Finance).</p>
+      <p style="margin-top:12px;">Comparing sources is an essential tool for critical thinking and forming independent judgment. The ethical researcher must cross-reference narratives to decode the power vectors hidden beneath the apparent neutrality of numbers.</p>
+    </div>
+  </div>
+  <div class="slide-number">10 / 12</div>
+</section>
+
+<!-- SLIDE 11: REFERENCES -->
+<section class="slide" data-slide="11">
+  <div class="container">
+    <span class="tag">References</span>
+    <h2>Sources <span class="accent">Consulted</span></h2>
+
+    <div style="margin-top:30px;">
+      <div class="card" style="margin-bottom:16px;">
+        <p><strong>WSJ.</strong> "Oil Retreats to Prewar Levels as Gulf Flows Through Hormuz Pick Up". Finance, Commodities & Futures. The Wall Street Journal, 2026.</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.3);margin-top:4px;">https://www.wsj.com/finance/commodities-futures/oil-retreats-to-prewar-levels-as-gulf-flows-through-hormuz-pick-up-498c5104</p>
+      </div>
+      <div class="card" style="margin-bottom:16px;">
+        <p><strong>Al Jazeera.</strong> "Oil Prices Back to Pre-War Levels on Rising Middle East Supply". Business and Economy News, 25 Jun 2026.</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.3);margin-top:4px;">https://www.aljazeera.com/news/2026/6/25/oil-prices-back-to-pre-war-levels-on-rising-middle-east-supply</p>
+      </div>
+      <div class="card" style="margin-bottom:16px;">
+        <p><strong>BBC.</strong> "Oil Price Falls to Levels Not Seen Since Before Iran War". Osmond Chia, Business Reporter, 2026.</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.3);margin-top:4px;">https://www.bbc.com/news/articles/c0jy7d7wzv4o</p>
+      </div>
+      <div class="card" style="margin-bottom:16px;">
+        <p><strong>Yahoo Finance / The Motley Fool.</strong> "PCE Inflation Reached Its Highest Level in 3 Years. Here's What Investors Need to Know." Jeremy Bowman, 2026.</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.3);margin-top:4px;">https://finance.yahoo.com/economy/policy/articles/pce-inflation-reached-highest-level-174530224.html</p>
+      </div>
+      <div class="card" style="margin-bottom:16px;">
+        <p><strong>Gadamer, H.G.</strong> Truth and Method. Philosophical Hermeneutics.</p>
+      </div>
+      <div class="card">
+        <p><strong>Ricoeur, P.</strong> The Conflict of Interpretations. Critical Hermeneutics.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">11 / 12</div>
+</section>
+
+<!-- SLIDE 12: QUESTIONS -->
+<section class="slide" data-slide="12">
+  <div class="blob blob-3"></div>
+  <div class="container" style="text-align:center;">
+    <span class="tag">Closing</span>
+    <h1 style="margin-top:60px;">Questions?</h1>
+    <div class="conclusion-box" style="margin-top:60px;text-align:left;max-width:800px;margin-left:auto;margin-right:auto;">
+      <p style="font-size:17px;font-style:italic;text-align:center;">
+        "The true leverage point of critical thinking lies in perceiving that media does not merely report facts — it constructs the political and economic meaning of those facts to legitimize specific agendas."
+      </p>
+    </div>
+    <p style="margin-top:60px;color:rgba(255,255,255,0.2);font-size:14px;">Marcus Rodrigues Faust · UWLA · June 2026</p>
+  </div>
+  <div class="slide-number">12 / 12</div>
+</section>
+
+<div class="nav-controls">
+  <button onclick="prevSlide()">← Previous</button>
+  <span class="counter"><span id="currentSlide">1</span> / 12</span>
+  <button onclick="nextSlide()">Next →</button>
+</div>
+
+<script>
+  let currentSlide = 1;
+  const totalSlides = 12;
+
+  function showSlide(n) {
+    if (n < 1) n = 1;
+    if (n > totalSlides) n = totalSlides;
+    currentSlide = n;
+    document.querySelectorAll('.slide').forEach(s => s.style.display = 'none');
+    document.querySelector(`.slide[data-slide="${n}"]`).style.display = 'flex';
+    document.getElementById('currentSlide').textContent = n;
+    document.getElementById('progressBar').style.width = ((n / totalSlides) * 100) + '%';
+    window.scrollTo(0, 0);
+  }
+
+  function nextSlide() { showSlide(currentSlide + 1); }
+  function prevSlide() { showSlide(currentSlide - 1); }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); }
+  });
+
+  showSlide(1);
+</script>
+
+</body>
+</html>
