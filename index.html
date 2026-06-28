@@ -369,6 +369,19 @@
     top: 40%; right: 10%;
   }
 
+  .prop-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .prop-table th { background: rgba(225,24,106,0.12); color: #E1186A; padding: 10px 12px; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.5px; border-bottom: 2px solid rgba(225,24,106,0.2); }
+  .prop-table td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.8); }
+  .prop-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .prop-table .highlight-row td { background: rgba(225,24,106,0.06); }
+  .prop-bar { display: inline-block; height: 18px; border-radius: 4px; background: linear-gradient(90deg, #E1186A, #FF6B9D); margin-right: 8px; vertical-align: middle; min-width: 4px; }
+  .insight-box { background: rgba(255,255,255,0.03); border-left: 3px solid #3F2BA0; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 12px 0; font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+  .insight-box strong { color: #fff; }
+  .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  .insight-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 16px; }
+  .insight-card h4 { font-family: 'Montserrat', sans-serif; font-size: 12px; color: #E1186A; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .insight-card p { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+
   @media (max-width: 768px) {
     .slide { padding: 40px 24px; }
     h1 { font-size: 32px; }
@@ -376,6 +389,8 @@
     .grid-2, .grid-4 { grid-template-columns: 1fr; }
     .stat-row { flex-direction: column; }
     .slide-cover h1 { font-size: 32px; }
+    .prop-table { font-size: 11px; }
+    .insight-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -732,11 +747,101 @@
       </div>
     </div>
   </div>
-  <div class="slide-number">09 / 12</div>
+  <div class="slide-number">09 / 13</div>
 </section>
 
-<!-- SLIDE 10: CONCLUSÃO -->
+<!-- SLIDE 10: PROPAGAÇÃO -->
 <section class="slide" data-slide="10">
+  <div class="container">
+    <span class="tag">Disseminação</span>
+    <h2>Propagação e <span class="accent">Backlinks</span></h2>
+    <p class="subtitle" style="margin-bottom:20px;">Quanto mais o link se propagou, maior o potencial de influência. Dados de domínios únicos (linking websites).</p>
+
+    <div class="table-wrap">
+      <table class="prop-table">
+        <thead>
+          <tr>
+            <th>Veículo</th>
+            <th>Lente Hermenêutica</th>
+            <th>DR</th>
+            <th>Backlinks</th>
+            <th>Domínios Únicos</th>
+            <th>% Propagação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Fox News</strong></td>
+            <td>Ceticismo Político</td>
+            <td>91</td>
+            <td>2</td>
+            <td>1</td>
+            <td><span class="prop-bar" style="width:4px;"></span>100%</td>
+          </tr>
+          <tr>
+            <td><strong>WSJ</strong></td>
+            <td>Tecnocrática / Financeira</td>
+            <td>92</td>
+            <td>5</td>
+            <td>2</td>
+            <td><span class="prop-bar" style="width:8px;"></span>200%</td>
+          </tr>
+          <tr>
+            <td><strong>Yahoo Finance</strong></td>
+            <td>Macroeconômica / Monetária</td>
+            <td>94</td>
+            <td>57</td>
+            <td>33</td>
+            <td><span class="prop-bar" style="width:80px;"></span>3.300%</td>
+          </tr>
+          <tr>
+            <td><strong>BBC</strong></td>
+            <td>Social / Concorrencial</td>
+            <td>93</td>
+            <td>78</td>
+            <td>36</td>
+            <td><span class="prop-bar" style="width:88px;"></span>3.600%</td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>Al Jazeera</strong></td>
+            <td>Geopolítica / Soberania</td>
+            <td>90</td>
+            <td>71</td>
+            <td>37</td>
+            <td><span class="prop-bar" style="width:90px;"></span>3.700%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <h4>🌍 Hegemonia Geopolítica e Social</h4>
+        <p>Al Jazeera e BBC dominaram o debate digital — Alcance <strong>37× maior</strong> que a Fox News. As lentes de soberania e justiça corporativa pulverizaram o enquadramento político nos ecossistemas únicos de internet.</p>
+      </div>
+      <div class="insight-card">
+        <h4>📉 Isolamento do Prisma Institucional</h4>
+        <p>O enquadramento técnico do WSJ e o ceticismo político da Fox News <strong>fracassaram em obter tração viral</strong>. Mensagens confinadas a silos de nicho — pragmatismo de mercado não engajou como temas de impacto direto.</p>
+      </div>
+      <div class="insight-card">
+        <h4>💰 Força da Alavanca Macroeconômica</h4>
+        <p>Yahoo Finance consolidou <strong>3.300%</strong> de propagação — o medo inflacionário como narrativa paralela de altíssimo impacto e validação cruzada entre sites.</p>
+      </div>
+      <div class="insight-card">
+        <h4>🔍 O Que os Números Revelam</h4>
+        <p>A audiência digital reage mais a narrativas de <strong>poder soberano</strong> e <strong>impacto direto no bolso</strong> do que a análises técnicas ou financeiras. O dado bruto não basta — a moldura decide o alcance.</p>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <strong>Conclusão da análise de disseminação:</strong> As lentes que mais se propagaram (Al Jazeera + BBC + Yahoo Finance) são as que conectam o fato a uma <em>consequência tangível</em> — poder soberano, justiça ao consumidor, inflação no bolso. O público digital não compartilha números abstratos; compartilha <strong>o significado desses números</strong>.
+    </div>
+  </div>
+  <div class="slide-number">10 / 13</div>
+</section>
+
+<!-- SLIDE 11: CONCLUSÃO -->
+<section class="slide" data-slide="11">
   <div class="container">
     <span class="tag">Conclusão</span>
     <h2>O que a <span class="accent">Hermenêutica</span> Revelou</h2>
@@ -771,16 +876,20 @@
       <p style="margin-top:12px;">A comparação entre fontes é ferramenta essencial para o pensamento crítico e a formação de juízo próprio. O pesquisador ético deve cruzar narrativas para decodificar os vetores de poder ocultos sob a aparente neutralidade dos números.</p>
     </div>
   </div>
-  <div class="slide-number">10 / 12</div>
+  <div class="slide-number">11 / 13</div>
 </section>
 
-<!-- SLIDE 11: REFERÊNCIAS -->
-<section class="slide" data-slide="11">
+<!-- SLIDE 12: REFERÊNCIAS -->
+<section class="slide" data-slide="12">
   <div class="container">
     <span class="tag">Referências</span>
     <h2>Fontes <span class="accent">Consultadas</span></h2>
 
     <div style="margin-top:30px;">
+      <div class="card" style="margin-bottom:16px;">
+        <p><strong>Fox News.</strong> "Strait of Hormuz oil prices back to pre-war levels". Politics, 2026.</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.3);margin-top:4px;">https://www.foxnews.com/</p>
+      </div>
       <div class="card" style="margin-bottom:16px;">
         <p><strong>WSJ.</strong> "Oil Retreats to Prewar Levels as Gulf Flows Through Hormuz Pick Up". Finance, Commodities & Futures. The Wall Street Journal, 2026.</p>
         <p style="font-size:13px;color:rgba(255,255,255,0.3);margin-top:4px;">https://www.wsj.com/finance/commodities-futures/oil-retreats-to-prewar-levels-as-gulf-flows-through-hormuz-pick-up-498c5104</p>
@@ -805,11 +914,11 @@
       </div>
     </div>
   </div>
-  <div class="slide-number">11 / 12</div>
+  <div class="slide-number">12 / 13</div>
 </section>
 
-<!-- SLIDE 12: PERGUNTAS -->
-<section class="slide" data-slide="12">
+<!-- SLIDE 13: PERGUNTAS -->
+<section class="slide" data-slide="13">
   <div class="blob blob-3"></div>
   <div class="container" style="text-align:center;">
     <span class="tag">Encerramento</span>
@@ -821,18 +930,18 @@
     </div>
     <p style="margin-top:60px;color:rgba(255,255,255,0.2);font-size:14px;">Abdul · Carolina · Marcus · Pedro · Ricardo · Wesler · UWLA · Junho de 2026</p>
   </div>
-  <div class="slide-number">12 / 12</div>
+  <div class="slide-number">13 / 13</div>
 </section>
 
 <div class="nav-controls">
   <button onclick="prevSlide()">← Anterior</button>
-  <span class="counter"><span id="currentSlide">1</span> / 12</span>
+  <span class="counter"><span id="currentSlide">1</span> / 13</span>
   <button onclick="nextSlide()">Próximo →</button>
 </div>
 
 <script>
   let currentSlide = 1;
-  const totalSlides = 12;
+  const totalSlides = 13;
 
   function showSlide(n) {
     if (n < 1) n = 1;
